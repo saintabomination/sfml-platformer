@@ -2,12 +2,12 @@
 #define PLAYER_H
 
 #include "../Headers.h"
-#include <SFML/Graphics/Texture.hpp>
 
 class Player
 {
     private:
         sf::RectangleShape shape;
+        float speed;
 
     public:
         // Constructor
@@ -15,8 +15,10 @@ class Player
 
         // Modifiers
         void setTexture(const sf::Texture* newTexture);
+        void setSpeed(const float newSpeed);
 
         // Functions
+        void move(sf::Vector2f movementVector);
         void render(sf::RenderTarget& target);
 };
 

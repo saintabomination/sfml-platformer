@@ -1,5 +1,4 @@
 #include "../Headers/TextureManager.h"
-#include <SFML/Graphics/Texture.hpp>
 
 // Functions
 

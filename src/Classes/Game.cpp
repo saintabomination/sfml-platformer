@@ -38,6 +38,7 @@ void Game::initTextures()
 void Game::initPlayer()
 {
     this->player.setTexture(this->textureManager.getTexture("player"));
+    this->player.setSpeed(80.f);
 }
 
 // Constructor and Destructor
@@ -88,11 +89,11 @@ void Game::updateKeys()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
     {
-        std::cout << "A\n";
+        this->player.move(sf::Vector2f(-1.f, 0.f));
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
     {
-        std::cout << "D\n";
+        this->player.move(sf::Vector2f(1.f, 0.f));
     }
 }
 
