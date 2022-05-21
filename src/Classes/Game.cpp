@@ -84,10 +84,23 @@ void Game::updateClocks()
     this->dtElapsed = this->dtClock.restart().asSeconds();
 }
 
+void Game::updateKeys()
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+    {
+        std::cout << "A\n";
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+    {
+        std::cout << "D\n";
+    }
+}
+
 void Game::update()
 {
     this->updateSFMLEvents();
     this->updateClocks();
+    this->updateKeys();
 }
 
 // Render Functions

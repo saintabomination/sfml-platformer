@@ -32,6 +32,7 @@ class Game
         // Update Functions
         void updateSFMLEvents();
         void updateClocks();
+        void updateKeys();
         void update();
 
         // Accessors
