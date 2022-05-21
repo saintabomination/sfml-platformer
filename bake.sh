@@ -11,4 +11,7 @@ then
     mkdir -p $BUILD_DIR
     $COMPILER *.o -o $BUILD_DIR/$PROJECT_NAME
     rm *.o
+elif [[ $1 == "run" ]]
+then
+    ./$BUILD_DIR/$PROJECT_NAME
 fi
