@@ -17,11 +17,23 @@ void Game::initWindow()
     this->window->setVerticalSyncEnabled(WINDOW_VSYNC_ON);
 }
 
+void Game::initTextures()
+{
+    this->textureManager.addTexture("player", "src/Assets/Textures/player.png");
+}
+
+void Game::initPlayer()
+{
+    this->player.setTexture(this->textureManager.getTexture("player"));
+}
+
 // Constructor and Destructor
 
 Game::Game()
 {
     this->initWindow();
+    this->initTextures();
+    this->initPlayer();
 }
 
 Game::~Game()
@@ -54,9 +66,15 @@ void Game::update()
 
 // Render Functions
 
+void Game::renderPlayer()
+{
+    this->player.render(*this->window);
+}
+
 void Game::render()
 {
     this->window->clear();
+    this->renderPlayer();
     this->window->display();
 }
 

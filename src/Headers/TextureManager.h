@@ -3,13 +3,14 @@
 
 #include "../Headers.h"
 
-class TextureManager {
+class TextureManager
+{
     private:
         std::map<const char*, sf::Texture> textures;
 
     public:
         // Constructor
-        TextureManager();
+        TextureManager(){};
 
         // Functions
         void addTexture(const char* textureName, const char* path);

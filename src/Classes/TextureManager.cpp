@@ -11,6 +11,7 @@ void TextureManager::addTexture(const char* textureName, const char* path)
         std::cout << "ERROR::TEXTURE_MANAGER::CANT_LOAD_TEXTURE\nPath: " << path << '\n';
     }
 
+    texture.setRepeated(true);
     this->textures.insert(std::pair<const char*, sf::Texture>(textureName, texture));
 }
 
