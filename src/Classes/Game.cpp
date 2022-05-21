@@ -40,7 +40,7 @@ void Game::initBlocks()
 {
     this->blocks.push_back(Block(
         this->textureManager.getTexture("stone"),
-        sf::Vector2f(64.f, 64.f),
+        sf::Vector2f(64.f, 128.f),
         sf::Vector2f(64.f, 64.f)
     ));
 }
@@ -113,6 +113,7 @@ void Game::update()
     this->updateSFMLEvents();
     this->updateClocks();
     this->updateKeys();
+    this->player.update(this->blocks);
 }
 
 // Render Functions
@@ -129,7 +130,7 @@ void Game::renderPlayer()
 
 void Game::render()
 {
-    this->window->clear();
+    this->window->clear(sf::Color(40, 40, 40));
     this->renderBlocks();
     this->renderPlayer();
     this->window->display();

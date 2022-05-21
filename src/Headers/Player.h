@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "../Headers.h"
+#include "Block.h"
 
 class Player
 {
@@ -19,6 +20,7 @@ class Player
 
         // Functions
         void move(sf::Vector2f movementVector);
+        void update(std::vector<Block> blocks);
         void render(sf::RenderTarget& target);
 };
 
