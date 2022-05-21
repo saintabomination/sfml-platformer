@@ -12,6 +12,10 @@ class Game
         sf::Event sfEvent;
         Player player;
 
+        // Clocks
+        sf::Clock dtClock;
+        float dtElapsed;
+
         // Managers
         TextureManager textureManager;
 
@@ -27,7 +31,11 @@ class Game
 
         // Update Functions
         void updateSFMLEvents();
+        void updateClocks();
         void update();
+
+        // Accessors
+        const float getDt() const;
 
         // Render Functions
         void renderPlayer();

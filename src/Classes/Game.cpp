@@ -41,6 +41,13 @@ Game::~Game()
     delete this->window;
 }
 
+// Accessors
+
+const float Game::getDt() const
+{
+    return this->dtElapsed;
+}
+
 // Update Functions
 
 void Game::updateSFMLEvents()
@@ -59,9 +66,16 @@ void Game::updateSFMLEvents()
     }
 }
 
+void Game::updateClocks()
+{
+    this->dtElapsed = this->dtClock.restart().asSeconds();
+    std::cout << this->dtElapsed << '\n';
+}
+
 void Game::update()
 {
     this->updateSFMLEvents();
+    this->updateClocks();
 }
 
 // Render Functions
