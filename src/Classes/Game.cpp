@@ -33,6 +33,16 @@ void Game::initWindow()
 void Game::initTextures()
 {
     this->textureManager.addTexture("player", "src/Assets/Textures/player.png");
+    this->textureManager.addTexture("stone", "src/Assets/Textures/stone.png");
+}
+
+void Game::initBlocks()
+{
+    this->blocks.push_back(Block(
+        this->textureManager.getTexture("stone"),
+        sf::Vector2f(64.f, 64.f),
+        sf::Vector2f(64.f, 64.f)
+    ));
 }
 
 void Game::initPlayer()
@@ -47,6 +57,7 @@ Game::Game()
 {
     this->initWindow();
     this->initTextures();
+    this->initBlocks();
     this->initPlayer();
 }
 
@@ -106,6 +117,11 @@ void Game::update()
 
 // Render Functions
 
+void Game::renderBlocks()
+{
+    for (Block& block : this->blocks) block.render(*this->window);
+}
+
 void Game::renderPlayer()
 {
     this->player.render(*this->window);
@@ -114,6 +130,7 @@ void Game::renderPlayer()
 void Game::render()
 {
     this->window->clear();
+    this->renderBlocks();
     this->renderPlayer();
     this->window->display();
 }

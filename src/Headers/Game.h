@@ -2,15 +2,15 @@
 #define GAME_H
 
 #include "../Headers.h"
-#include "Player.h"
 #include "TextureManager.h"
+#include "Block.h"
+#include "Player.h"
 
 class Game
 {
     private:
         sf::RenderWindow* window;
         sf::Event sfEvent;
-        Player player;
 
         // Clocks
         sf::Clock dtClock;
@@ -19,9 +19,14 @@ class Game
         // Managers
         TextureManager textureManager;
 
+        // Components
+        Player player;
+        std::vector<Block> blocks;
+
         // Initialisers
         void initWindow();
         void initTextures();
+        void initBlocks();
         void initPlayer();
 
     public:
@@ -39,6 +44,7 @@ class Game
         const float getDt() const;
 
         // Render Functions
+        void renderBlocks();
         void renderPlayer();
         void render();
 
