@@ -1,20 +1,33 @@
 #include "../Headers/Game.h"
-#include <SFML/Window/Event.hpp>
-
-// Constants
-const unsigned int WINDOW_WIDTH  = 800;
-const unsigned int WINDOW_HEIGHT = 600;
-const char* WINDOW_TITLE         = "SFML";
-const unsigned int WINDOW_FPS    = 60;
-const bool WINDOW_VSYNC_ON       = false;
 
 // Initialisers
 
 void Game::initWindow()
 {
-    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
-    this->window->setFramerateLimit(WINDOW_FPS);
-    this->window->setVerticalSyncEnabled(WINDOW_VSYNC_ON);
+    unsigned int windowWidth  = 800;
+    unsigned int windowHeight = 600;
+    std::string windowTitle   = "SFML";
+    unsigned int windowFPS    = 60;
+    bool windowVSyncOn        = false;
+
+    // Loading Window.ini Config File
+    std::ifstream configFile("src/Config/Window.ini");
+    if (!configFile.is_open())
+    {
+        std::cout << "ERROR::GAME::CANT_LOAD_WINDOW_CONFIG\n";
+    }
+    else
+    {
+        configFile >> windowTitle;
+        configFile >> windowWidth >> windowHeight;
+        configFile >> windowFPS >> windowVSyncOn;
+        
+        configFile.close();
+    }
+    
+    this->window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), windowTitle);
+    this->window->setFramerateLimit(windowFPS);
+    this->window->setVerticalSyncEnabled(windowVSyncOn);
 }
 
 void Game::initTextures()
@@ -69,7 +82,6 @@ void Game::updateSFMLEvents()
 void Game::updateClocks()
 {
     this->dtElapsed = this->dtClock.restart().asSeconds();
-    std::cout << this->dtElapsed << '\n';
 }
 
 void Game::update()
